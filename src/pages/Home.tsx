@@ -71,10 +71,12 @@ export const Home: React.FC = () => {
       <section className="relative bg-[#2B525F] text-white py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src={siteData.heroImage} 
+            src="/images/hero-768.webp" 
+            srcSet="/images/hero-480.webp 480w, /images/hero-768.webp 768w, /images/hero-1280.webp 1280w"
+            sizes="100vw"
             alt="Jet's Window Cleaning Hero" 
-            width={1920}
-            height={1080}
+            width={1280}
+            height={720}
             fetchPriority="high"
             decoding="async"
             className="w-full h-full object-cover"
