@@ -1,0 +1,5 @@
+{
+  "name": "Jets Window Cleaning",
+  "description": "Professional window cleaning and pressure washing services in Richmond, VA and surrounding areas.",
+  "requestFramePermissions": ["geolocation"]
+}
