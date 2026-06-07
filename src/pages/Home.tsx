@@ -85,27 +85,13 @@ export const Home: React.FC = () => {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight"
-            >
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
               Richmond's Premier <span className="text-[#65D6CE]">Window Cleaning</span> & Exterior Care
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-xl text-gray-200 mb-10 leading-relaxed"
-            >
+            </h1>
+            <p className="text-xl text-gray-200 mb-10 leading-relaxed">
               We provide professional, reliable, and high-quality exterior cleaning services that make your home or business shine. Streak-free windows, spotless siding, and clear gutters, guaranteed.
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/contact" 
                 className="bg-[#65D6CE] text-[#2B525F] px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors text-center"
@@ -118,7 +104,7 @@ export const Home: React.FC = () => {
               >
                 <Phone className="mr-2 h-5 w-5" /> {siteData.phone}
               </a>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
