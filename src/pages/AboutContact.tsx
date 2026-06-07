@@ -21,7 +21,7 @@ export const About: React.FC = () => {
             alt="About Jet's Background" 
             width={1200}
             height={600}
-            decoding="async"
+            fetchPriority="high"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -159,7 +159,7 @@ export const Contact: React.FC = () => {
             alt="Contact Jet's Background" 
             width={1200}
             height={600}
-            decoding="async"
+            fetchPriority="high"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />

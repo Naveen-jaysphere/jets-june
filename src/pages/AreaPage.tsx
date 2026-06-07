@@ -67,7 +67,7 @@ export const AreaPage: React.FC = () => {
             alt={`Window Cleaning in ${location.name} Background`} 
             width={1200}
             height={600}
-            decoding="async"
+            fetchPriority="high"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />

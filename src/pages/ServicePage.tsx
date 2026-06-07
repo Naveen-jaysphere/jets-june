@@ -101,7 +101,7 @@ export const ServicePage: React.FC = () => {
             alt={`${service.title} Background`} 
             width={1200}
             height={600}
-            decoding="async"
+            fetchPriority="high"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />

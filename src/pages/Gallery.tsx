@@ -40,7 +40,7 @@ export const Gallery: React.FC = () => {
             alt="Gallery Background" 
             width={1200}
             height={600}
-            decoding="async"
+            fetchPriority="high"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
