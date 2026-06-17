@@ -33,39 +33,34 @@ export const Gallery: React.FC = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative bg-[#2B525F] text-white py-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-15">
-          <img 
-            src={siteData.heroImage} 
-            alt="Gallery Background" 
-            width={1200}
-            height={600}
-            fetchPriority="high"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+      <section className="relative bg-primary-dark text-white py-24 overflow-hidden border-b-8 border-accent">
+        {/* Diagonal Brand Stripes */}
+        <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden opacity-25 pointer-events-none">
+          <div className="absolute -right-1/4 -top-1/4 w-full h-[150%] bg-[#2B525F] rotate-[-35deg]" />
+          <div className="absolute -right-1/3 -top-1/4 w-[150px] h-[150%] bg-[#65D6CE] rotate-[-35deg]" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6">Our Work Gallery</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <span className="font-retro text-5xl text-accent block mb-2 drop-shadow-[2px_2px_0px_rgba(14,42,53,1)]">Premium Results</span>
+          <h1 className="text-5xl lg:text-7xl font-condensed tracking-wider uppercase mb-6">Our Work Gallery</h1>
+          <p className="text-xl text-cream max-w-3xl mx-auto leading-relaxed font-semibold">
             Take a look at some of the sparkling results we've delivered for our clients throughout Richmond and surrounding counties.
           </p>
         </div>
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-24 bg-cream/10 relative">
+      <section className="py-24 bg-cream relative">
         <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {images.map((img, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative group overflow-hidden rounded-3xl shadow-lg aspect-[4/3] bg-gray-50"
+              transition={{ delay: i * 0.05 }}
+              className="relative group overflow-hidden rounded-[2rem] border-2 border-primary-dark shadow-[4px_4px_0px_#0E2A35] aspect-[4/3] bg-cream-light"
             >
               <img 
                 src={img.src} 
@@ -73,9 +68,12 @@ export const Gallery: React.FC = () => {
                 width={400}
                 height={300}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
+              <div className="absolute inset-0 bg-primary-dark/85 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                <span className="font-condensed text-3xl font-extrabold uppercase tracking-wider text-accent drop-shadow-md">{img.alt}</span>
+              </div>
             </motion.div>
           ))}
         </div>

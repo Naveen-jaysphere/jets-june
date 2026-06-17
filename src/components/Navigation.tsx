@@ -9,23 +9,26 @@ export const Navbar: React.FC = () => {
   const [areasOpen, setAreasOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-cream-light/95 backdrop-blur-md border-b border-primary/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            {/* Logo/Name removed per user request */}
+            <Link to="/" className="flex items-center space-x-2 group">
+              <span className="font-retro text-4xl text-accent tracking-wide drop-shadow-[2px_2px_0px_rgba(14,42,53,1)] transition-transform group-hover:scale-105 duration-200">Jet's</span>
+              <span className="font-condensed text-2xl font-extrabold text-primary tracking-wider pt-2 uppercase">Window Cleaning</span>
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-[#65D6CE] font-medium">Home</Link>
-            <Link to="/about" className="text-gray-700 hover:text-[#65D6CE] font-medium">About</Link>
-            <Link to="/gallery" className="text-gray-700 hover:text-[#65D6CE] font-medium">Gallery</Link>
+            <Link to="/" className="text-primary hover:text-accent font-semibold tracking-wide transition-colors">Home</Link>
+            <Link to="/about" className="text-primary hover:text-accent font-semibold tracking-wide transition-colors">About</Link>
+            <Link to="/gallery" className="text-primary hover:text-accent font-semibold tracking-wide transition-colors">Gallery</Link>
             
             <div className="relative group">
               <button 
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
-                className="flex items-center text-gray-700 hover:text-[#65D6CE] font-medium py-4"
+                className="flex items-center text-primary hover:text-accent font-semibold tracking-wide transition-colors py-4"
               >
                 Services <ChevronDown className="ml-1 h-4 w-4" />
               </button>
@@ -33,14 +36,14 @@ export const Navbar: React.FC = () => {
                 <div 
                   onMouseEnter={() => setServicesOpen(true)}
                   onMouseLeave={() => setServicesOpen(false)}
-                  className="absolute left-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                  className="absolute left-0 mt-0 w-56 rounded-xl shadow-lg bg-cream-light border border-primary/10 ring-1 ring-black ring-opacity-5 overflow-hidden"
                 >
                   <div className="py-1">
                     {siteData.services.map((service) => (
                       <Link
                         key={service.id}
                         to={`/${service.slug}`}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F1EEE0] hover:text-[#2B525F]"
+                        className="block px-4 py-2.5 text-sm text-primary font-medium hover:bg-accent/20 hover:text-primary-dark transition-colors"
                       >
                         {service.title}
                       </Link>
@@ -54,7 +57,7 @@ export const Navbar: React.FC = () => {
               <button 
                 onMouseEnter={() => setAreasOpen(true)}
                 onMouseLeave={() => setAreasOpen(false)}
-                className="flex items-center text-gray-700 hover:text-[#65D6CE] font-medium py-4"
+                className="flex items-center text-primary hover:text-accent font-semibold tracking-wide transition-colors py-4"
               >
                 Service Areas <ChevronDown className="ml-1 h-4 w-4" />
               </button>
@@ -62,14 +65,14 @@ export const Navbar: React.FC = () => {
                 <div 
                   onMouseEnter={() => setAreasOpen(true)}
                   onMouseLeave={() => setAreasOpen(false)}
-                  className="absolute left-0 mt-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+                  className="absolute left-0 mt-0 w-56 rounded-xl shadow-lg bg-cream-light border border-primary/10 ring-1 ring-black ring-opacity-5 overflow-hidden"
                 >
                   <div className="py-1">
                     {siteData.locations.map((area) => (
                       <Link
                         key={area.id}
                         to={`/${area.slug}`}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#F1EEE0] hover:text-[#2B525F]"
+                        className="block px-4 py-2.5 text-sm text-primary font-medium hover:bg-accent/20 hover:text-primary-dark transition-colors"
                       >
                         {area.name}
                       </Link>
@@ -79,10 +82,10 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            <Link to="/contact" className="text-gray-700 hover:text-[#65D6CE] font-medium">Contact</Link>
+            <Link to="/contact" className="text-primary hover:text-accent font-semibold tracking-wide transition-colors">Contact</Link>
             <Link 
               to="/contact"
-              className="bg-[#2B525F] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#65D6CE] transition-colors"
+              className="bg-primary text-white font-condensed text-xl tracking-wider uppercase px-6 py-2 rounded-xl font-bold hover:bg-accent hover:text-primary-dark border border-primary/10 shadow-sm transition-all hover:scale-[1.02]"
             >
               Get a Quote
             </Link>
@@ -91,7 +94,7 @@ export const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-[#65D6CE]"
+              className="text-primary hover:text-accent"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -101,41 +104,42 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
+        <div className="md:hidden bg-cream-light border-t border-primary/10 shadow-inner">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-gray-700 font-medium">Home</Link>
-            <Link to="/about" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-gray-700 font-medium">About</Link>
-            <Link to="/gallery" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-gray-700 font-medium">Gallery</Link>
-            <div className="px-3 py-2 text-gray-700 font-bold">Services</div>
+            <Link to="/" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-primary hover:text-accent font-bold">Home</Link>
+            <Link to="/about" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-primary hover:text-accent font-bold">About</Link>
+            <Link to="/gallery" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-primary hover:text-accent font-bold">Gallery</Link>
+            <div className="px-3 py-2 text-primary-dark font-condensed text-xl tracking-wider uppercase font-bold border-b border-primary/5">Services</div>
             {siteData.services.map((service) => (
               <Link
                 key={service.id}
                 to={`/${service.slug}`}
                 onClick={() => setIsOpen(false)}
-                className="block px-6 py-2 text-sm text-gray-600"
+                className="block px-6 py-1.5 text-sm text-primary hover:text-accent font-semibold"
               >
                 {service.title}
               </Link>
             ))}
-            <div className="px-3 py-2 text-gray-700 font-bold">Service Areas</div>
+            <div className="px-3 py-2 text-primary-dark font-condensed text-xl tracking-wider uppercase font-bold border-b border-primary/5 mt-2">Service Areas</div>
             {siteData.locations.map((area) => (
               <Link
                 key={area.id}
                 to={`/${area.slug}`}
                 onClick={() => setIsOpen(false)}
-                className="block px-6 py-2 text-sm text-gray-600"
+                className="block px-6 py-1.5 text-sm text-primary hover:text-accent font-semibold"
               >
                 {area.name}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-gray-700 font-medium">Contact</Link>
+            <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-primary hover:text-accent font-bold border-t border-primary/5 mt-2">Contact</Link>
             <div className="px-3 py-4">
-              <a 
-                href={`tel:${siteData.phone}`}
-                className="block w-full text-center bg-[#2B525F] text-white px-6 py-3 rounded-full font-semibold"
+              <Link 
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center bg-primary text-white font-condensed text-xl tracking-wider uppercase py-3 rounded-xl font-bold hover:bg-accent hover:text-primary-dark"
               >
-                Call Now: {siteData.phone}
-              </a>
+                Get a Free Quote
+              </Link>
             </div>
           </div>
         </div>
@@ -146,14 +150,15 @@ export const Navbar: React.FC = () => {
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#2B525F] text-white pt-16 pb-8">
+    <footer className="bg-[#0E2A35] text-white pt-16 pb-8 border-t-4 border-[#65D6CE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center mb-6">
-              <h3 className="text-2xl font-bold tracking-tight">
-                JET'S <span className="text-[#65D6CE]">WINDOW CLEANING</span>
-              </h3>
+            <div className="mb-6">
+              <div className="flex flex-col">
+                <span className="font-retro text-4xl text-[#65D6CE] tracking-wide drop-shadow-[2px_2px_0px_rgba(14,42,53,1)]">Jet's</span>
+                <span className="font-condensed text-xl font-bold text-white tracking-widest mt-1 uppercase">Window Cleaning</span>
+              </div>
             </div>
             <p className="text-gray-300 mb-6">
               Professional window cleaning and exterior maintenance services for Richmond and surrounding areas. We take pride in making your property shine.

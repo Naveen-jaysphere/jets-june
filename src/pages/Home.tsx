@@ -9,9 +9,9 @@ import { ReviewWidget } from '../components/ReviewWidget';
 const ServiceCard: React.FC<{ service: typeof siteData.services[0] }> = ({ service }) => (
   <motion.div 
     whileHover={{ y: -5 }}
-    className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden group flex flex-col h-full transition-all hover:shadow-xl hover:shadow-[#2B525F]/5"
+    className="bg-cream-light rounded-[2rem] shadow-sm border-2 border-primary-dark overflow-hidden group flex flex-col h-full transition-all hover:shadow-[6px_6px_0px_rgba(43,82,95,0.7)]"
   >
-    <div className="aspect-[4/3] overflow-hidden bg-gray-50">
+    <div className="aspect-[4/3] overflow-hidden bg-[#FAF9F3] border-b-2 border-primary-dark">
       <img 
         src={service.image} 
         alt={service.title} 
@@ -22,11 +22,12 @@ const ServiceCard: React.FC<{ service: typeof siteData.services[0] }> = ({ servi
         referrerPolicy="no-referrer"
       />
     </div>
-    <div className="p-6 pt-0 flex flex-col flex-grow">
-      <h3 className="text-lg font-bold text-[#2B525F] mb-4 group-hover:text-[#65D6CE] transition-colors line-clamp-1">{service.title}</h3>
+    <div className="p-6 flex flex-col flex-grow">
+      <h3 className="font-condensed text-3xl font-extrabold text-primary-dark mb-2 group-hover:text-accent transition-colors uppercase tracking-wider">{service.title}</h3>
+      <p className="text-sm text-primary mb-6 line-clamp-3 leading-relaxed font-semibold">{service.description}</p>
       <Link 
         to={`/${service.slug}`} 
-        className="mt-auto inline-flex items-center justify-center w-full py-3 rounded-xl bg-[#F1EEE0] text-[#2B525F] font-bold text-sm hover:bg-[#65D6CE] transition-all group/btn"
+        className="mt-auto inline-flex items-center justify-center w-full py-3 rounded-xl bg-primary text-white font-condensed text-xl tracking-wider uppercase font-bold hover:bg-accent hover:text-primary-dark transition-all border border-primary/20 group/btn shadow-[3px_3px_0px_rgba(14,42,53,1)] hover:shadow-none"
       >
         View Details <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
       </Link>
@@ -68,41 +69,41 @@ export const Home: React.FC = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative bg-[#2B525F] text-white py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img 
-            src="/images/hero-768.webp" 
-            srcSet="/images/hero-480.webp 480w, /images/hero-768.webp 768w, /images/hero-1280.webp 1280w"
-            sizes="100vw"
-            alt="Jet's Window Cleaning Hero" 
-            width={1280}
-            height={720}
-            fetchPriority="high"
-            decoding="async"
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+      <section className="relative bg-primary-dark text-white py-24 lg:py-36 overflow-hidden">
+        {/* Diagonal Brand Stripes */}
+        <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden opacity-30 pointer-events-none">
+          <div className="absolute -right-1/4 -top-1/4 w-full h-[150%] bg-[#2B525F] rotate-[-35deg]" />
+          <div className="absolute -right-1/3 -top-1/4 w-[150px] h-[150%] bg-[#65D6CE] rotate-[-35deg]" />
+          <div className="absolute -right-1/2 -top-1/4 w-[80px] h-[150%] bg-[#65D6CE] rotate-[-35deg] opacity-75" />
         </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
-              Richmond's Premier <span className="text-[#65D6CE]">Window Cleaning</span> & Exterior Care
+            {/* Retro Tagline */}
+            <span className="inline-block font-condensed text-2xl tracking-widest text-accent uppercase mb-4 animate-pulse">
+              Hundreds of Happy Homeowners
+            </span>
+            <h1 className="text-5xl lg:text-8xl font-condensed tracking-tight uppercase leading-[0.95] mb-2 text-white">
+              Richmond
             </h1>
-            <p className="text-xl text-gray-200 mb-10 leading-relaxed">
+            <h2 className="font-retro text-7xl lg:text-9xl text-accent tracking-wide mb-6 drop-shadow-[5px_5px_0px_#0E2A35] leading-none">
+              Window Cleaning
+            </h2>
+            <p className="text-xl text-cream mb-10 leading-relaxed max-w-2xl font-medium">
               We provide professional, reliable, and high-quality exterior cleaning services that make your home or business shine. Streak-free windows, spotless siding, and clear gutters, guaranteed.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-lg">
               <Link 
                 to="/contact" 
-                className="bg-[#65D6CE] text-[#2B525F] px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors text-center"
+                className="bg-accent text-primary-dark py-4 px-8 rounded-xl font-condensed text-2xl tracking-wider hover:bg-cream hover:text-primary-dark transition-all text-center flex items-center justify-center uppercase shadow-[4px_4px_0px_#0E2A35] hover:shadow-[2px_2px_0px_#0E2A35] hover:scale-[1.01] active:scale-[0.99] duration-150 border-2 border-primary-dark group"
               >
-                Get Your Free Quote
+                Get a Free Quote <span className="ml-2 font-black group-hover:translate-x-1 transition-transform inline-block">→</span>
               </Link>
               <a 
-                href={`tel:${siteData.phone}`} 
-                className="bg-transparent border-2 border-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#2B525F] transition-colors text-center flex items-center justify-center"
+                href={`tel:${siteData.phone}`}
+                className="bg-transparent text-cream-light py-4 px-8 rounded-xl font-condensed text-2xl tracking-wider hover:bg-cream-light hover:text-primary-dark transition-all text-center flex items-center justify-center uppercase border-2 border-cream-light shadow-[4px_4px_0px_rgba(255,255,255,0.15)] group"
               >
-                <Phone className="mr-2 h-5 w-5" /> {siteData.phone}
+                Call {siteData.phone}
               </a>
             </div>
           </div>
@@ -110,12 +111,13 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-soft-teal/20 relative">
+      <section className="py-24 bg-cream relative">
         <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-[#2B525F] mb-4">Our Professional Services</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Expert care for every part of your property's exterior.</p>
+            <span className="font-retro text-4xl text-primary block mb-2">Jet's Premium Services</span>
+            <h2 className="text-4xl lg:text-6xl font-condensed text-primary-dark tracking-wide uppercase">What We Shine At</h2>
+            <div className="w-24 h-1 bg-accent mx-auto mt-4 rounded-full border border-primary-dark"></div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {siteData.services.map((service) => (
@@ -126,66 +128,58 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-cream/30 relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-5xl font-bold text-[#2B525F] mb-8">Why Richmond Homeowners Trust Jet's</h2>
-              <div className="space-y-6">
-                {[
-                  { icon: Shield, title: "Fully Insured & Professional", desc: "We carry comprehensive insurance to protect your property and our team, giving you peace of mind." },
-                  { icon: Award, title: "Quality Guarantee", desc: "We aren't happy until you are. If you aren't satisfied with our work, we'll make it right." },
-                  { icon: Clock, title: "Reliable Scheduling", desc: "We value your time. We show up when we say we will and complete the job efficiently." },
-                  { icon: Star, title: "Top-Rated Service", desc: "Our reputation in RVA is built on hundreds of happy customers and sparkling results." }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start">
-                    <div className="bg-[#65D6CE] p-3 rounded-xl mr-4">
-                      <item.icon className="h-6 w-6 text-[#2B525F]" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-[#2B525F] mb-1">{item.title}</h4>
-                      <p className="text-gray-600">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative bg-gray-100 rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-auto">
-              <img 
-                src="https://assets.cdn.filesafe.space/YWfVYzUiOZwlfqlBB4Wu/media/698c021352c952a014e920ac.jpg" 
-                alt="Professional Window Cleaning Excellence" 
-                width={600}
-                height={450}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-2xl shadow-xl max-w-xs">
-                <div className="flex text-[#65D6CE] mb-2">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
+      <section className="py-24 bg-cream-light relative overflow-hidden border-y-2 border-primary-dark/10">
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2B525F]/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <span className="font-retro text-4xl text-primary block mb-2">Our Quality Promise</span>
+            <h2 className="text-4xl lg:text-6xl font-condensed text-primary-dark tracking-wide uppercase mb-4">Why RVA Trusts Jet's</h2>
+            <p className="text-xl text-[#2B525F] max-w-2xl mx-auto font-bold uppercase tracking-wider font-condensed">We are dedicated to providing the absolute best exterior cleaning experience in RVA.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {[
+              { icon: Shield, title: "Fully Insured & Professional", desc: "We carry comprehensive insurance to protect your property and our team, giving you peace of mind." },
+              { icon: Award, title: "Quality Guarantee", desc: "We aren't happy until you are. If you aren't satisfied with our work, we'll make it right." },
+              { icon: Clock, title: "Reliable Scheduling", desc: "We value your time. We show up when we say we will and complete the job efficiently." },
+              { icon: Star, title: "Top-Rated Service", desc: "Our reputation in RVA is built on hundreds of happy customers and sparkling results." }
+            ].map((item, i) => (
+              <div key={i} className="flex items-start bg-cream p-6 rounded-2xl border-2 border-primary-dark shadow-[4px_4px_0px_#0E2A35]">
+                <div className="bg-accent p-3 rounded-xl mr-4 flex-shrink-0 border border-primary-dark">
+                  <item.icon className="h-6 w-6 text-primary-dark" />
                 </div>
-                <p className="text-[#2B525F] font-bold italic">"The best window cleaning service in Richmond! My house looks brand new."</p>
-                <p className="text-gray-500 text-sm mt-2">- Sarah J., Midlothian</p>
+                <div>
+                  <h4 className="font-condensed text-2xl font-bold text-primary-dark mb-1 uppercase tracking-wide">{item.title}</h4>
+                  <p className="text-primary leading-relaxed font-semibold">{item.desc}</p>
+                </div>
               </div>
+            ))}
+          </div>
+
+          <div className="mt-16 bg-cream p-8 rounded-2xl border-2 border-primary-dark shadow-[6px_6px_0px_#2B525F] max-w-2xl mx-auto flex flex-col items-center text-center">
+            <div className="flex text-accent drop-shadow-[1.5px_1.5px_0px_rgba(14,42,53,1)] mb-3">
+              {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
             </div>
+            <p className="text-lg text-primary-dark font-semibold italic">"The best window cleaning service in Richmond! My house looks brand new."</p>
+            <p className="text-primary font-condensed text-xl uppercase tracking-wider font-bold mt-3">- Sarah J., Midlothian</p>
           </div>
         </div>
       </section>
 
       {/* Service Areas Preview */}
-      <section className="py-24 bg-soft-teal/10 relative">
+      <section className="py-24 bg-cream relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-[#2B525F] mb-4">Proudly Serving the RVA Area</h2>
-            <p className="text-xl text-gray-600">We bring our expert cleaning services to neighborhoods across Richmond and surrounding counties.</p>
+            <span className="font-retro text-4xl text-primary block mb-2">RVA Proud</span>
+            <h2 className="text-4xl lg:text-6xl font-condensed text-primary-dark tracking-wide uppercase">Proudly Serving the RVA Area</h2>
+            <p className="text-lg text-primary max-w-2xl mx-auto font-semibold">We bring our expert cleaning services to neighborhoods across Richmond and surrounding counties.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             {siteData.locations.map((location) => (
               <Link 
                 key={location.id} 
                 to={`/${location.slug}`}
-                className="bg-[#F1EEE0] text-[#2B525F] px-6 py-3 rounded-full font-bold hover:bg-[#65D6CE] transition-colors"
+                className="bg-cream-light text-primary hover:bg-accent hover:text-primary-dark hover:shadow-[3px_3px_0px_#0E2A35] transition-all px-6 py-3 rounded-xl font-condensed text-xl uppercase tracking-wider font-bold border-2 border-primary-dark"
               >
                 {location.name}
               </Link>
@@ -198,20 +192,25 @@ export const Home: React.FC = () => {
       <ReviewWidget />
 
       {/* Call to Action Section */}
-      <section className="py-24 bg-[#2B525F] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-8">Ready for a Sparkling Home?</h2>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">Join hundreds of satisfied Richmond homeowners. Get your free, no-obligation quote in minutes.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+      <section className="py-24 bg-primary-dark text-white relative overflow-hidden border-t-8 border-accent">
+        {/* Diagonal Brand Stripes */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute -left-1/4 -bottom-1/4 w-full h-[150%] bg-[#65D6CE] rotate-[35deg]" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <span className="font-retro text-5xl text-accent block mb-2 drop-shadow-[2px_2px_0px_rgba(14,42,53,1)]">Ready for a Sparkling Home?</span>
+          <h2 className="text-4xl lg:text-7xl font-condensed uppercase tracking-wider mb-8">Let's Get Your Free Estimate</h2>
+          <p className="text-xl text-cream mb-12 max-w-2xl mx-auto font-medium">Join hundreds of satisfied Richmond homeowners. Get your free, no-obligation quote in minutes.</p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <Link 
               to="/contact" 
-              className="bg-[#65D6CE] text-[#2B525F] px-10 py-5 rounded-full font-bold text-xl hover:bg-white transition-colors"
+              className="w-full sm:w-auto bg-accent text-primary-dark px-10 py-5 rounded-xl font-condensed text-2xl tracking-wider uppercase font-bold hover:bg-cream hover:text-[#0E2A35] transition-all shadow-[6px_6px_0px_#2B525F] border-2 border-primary-dark"
             >
               Request a Free Quote
             </Link>
             <a 
               href={`tel:${siteData.phone}`} 
-              className="bg-transparent border-2 border-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-[#2B525F] transition-colors"
+              className="w-full sm:w-auto bg-transparent border-2 border-cream-light text-cream-light px-10 py-5 rounded-xl font-condensed text-2xl tracking-wider uppercase font-bold hover:bg-cream-light hover:text-primary-dark transition-all"
             >
               Call {siteData.phone}
             </a>
